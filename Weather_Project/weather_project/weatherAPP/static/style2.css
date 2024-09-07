@@ -1,0 +1,225 @@
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #e0f7fa;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    text-align: center;
+}
+.content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #006064;
+    margin-bottom: 30px;
+}
+.content p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #424242;
+    margin-bottom: 20px;
+}
+.btn-get-started {
+    background-color: #00838f;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 30px;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+.btn-get-started:hover {
+    background-color: #006064;
+    color: #eceff1;
+}
+footer {
+    background-color: #00838f;
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+}
+@media (max-width: 768px) {
+    .content h1 {
+        font-size: 2.5rem;
+    }
+    .navbar-nav .nav-link {
+        margin-left: 0;
+        text-align: center;
+        padding: 10px 0;
+    }
+}
+.weather-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 50px;
+    text-align: center;
+}
+.weather-icon {
+    font-size: 48px;
+}
+.weather-data {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+.weather-detail {
+    font-size: 18px;
+    margin-top: 10px;
+}
+.weather-day{
+    font-size: 28px;
+}
+.cityform{
+    margin-left:500px;
+}
+body {
+    background-color: #f0f8ff;
+    font-family: 'Arial', sans-serif;
+}
+.weather-form-container {
+    background-color: #e3f2fd; /* Unique background color */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-top: 50px;
+}
+.weather-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 50px;
+    text-align: center;
+}
+.weather-icon {
+    font-size: 48px;
+}
+.weather-data {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+.weather-detail {
+    font-size: 18px;
+    margin-top: 10px;
+}
+.weather-day {
+    font-size: 28px;
+}
+.btn-custom {
+    background-color: #42a5f5;
+    color: #fff;
+}
+.btn-custom:hover {
+    background-color: #1e88e5;
+    color: #fff;
+}
+h1 {
+    color: #1E90FF;
+}
+
+.contact-form {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.contact-form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.contact-form button {
+    background-color: #00838f;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.contact-form button:hover {
+    background-color: #005662;
+}
+
+.info {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.info h2 {
+    color: #00838f;
+}
+.containerr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.navbar {
+    background-color: #199477;
+}
+.navbar-custom {
+    background-color: #199477;
+}
+
+.navbar-brand {
+    color: #199477;
+}
+
+.navbar-nav .nav-link {
+    color: #ffffff;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #e0f7fa; /* Change color on hover if needed */
+}
+
+.navbar-toggler {
+    border: none; /* Optional: removes the border around the toggler */
+}
+
+.navbar-toggler-icon {
+    background-image: none; /* Ensure no default image */
+}
+
+@media (max-width: 992px) { /* Adjust as needed for different screen sizes */
+    .navbar-nav {
+        text-align: center;
+    }
+    .navbar-nav .nav-item {
+        margin: 0;
+    }
+    .navbar-nav .nav-link {
+        display: block;
+        padding: 10px;
+    }
+}
+

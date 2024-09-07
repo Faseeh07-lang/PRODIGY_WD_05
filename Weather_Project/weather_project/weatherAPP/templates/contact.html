@@ -1,0 +1,28 @@
+{% extends "home.html" %} {% block content %}
+<div class="containerr">
+  <h1>Contact Me</h1>
+  <form class="contact-form">
+    <label for="full-name">Full Name:</label>
+    <input type="text" id="full-name" name="full-name" required />
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required />
+
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" rows="5" required></textarea>
+
+    <button type="submit" class="btn btn-primary">Send</button>
+  </form>
+  <div class="info">
+    <h2>About Me</h2>
+    <p>
+      I am currently studying at University of Managment and Technology.The
+      reason i built this project to priovide weather information to the users
+      in an easy and user-friendly way.
+    </p>
+    <p>Email: <b>mf1.rehman@gmail.com</b></p>
+    <p>Phone: <b>0315-4474604</b></p>
+  </div>
+</div>
+
+{% endblock %}

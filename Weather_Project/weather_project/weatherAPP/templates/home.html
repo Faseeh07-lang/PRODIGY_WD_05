@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Weather Forecast</title>
+    {% load static %}
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <i class="fa-solid fa-cloud"></i>
+          WeatherApp
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'get_weather' %}">Weather</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    {% block content %}
+    <!-- Content -->
+    <div class="content">
+      <div class="container">
+        <h1>Your Source of Accurate Weather Forecast</h1>
+        <p>
+          Welcome to our WeatherApp, your trusted source for reliable and
+          up-to-date weather information.
+        </p>
+        <p>
+          Check the weather of cities all around the globe with ease. Our
+          platform provides comprehensive and detailed weather reports for any
+          location you desire.
+        </p>
+        <p>
+          Leveraging the powerful APIs of OpenWeather, we deliver precise
+          forecasts for the next 5 days, helping you plan ahead and stay
+          prepared for any weather conditions.
+        </p>
+        <p>
+          Whether you're scheduling an outdoor event or just planning your daily
+          commute, we've got you covered with insights on temperature, humidity,
+          wind speed, and more.
+        </p>
+        <p>
+          Experience seamless and user-friendly access to weather updates
+          anytime, anywhere.
+        </p>
+        <a href="{% url 'get_weather' %}" class="btn btn-get-started"
+          >Get Started</a
+        >
+      </div>
+    </div>
+    {% endblock %}
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p>Made with ❤️ by <b>M.Faseeh ur Rehman</b></p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

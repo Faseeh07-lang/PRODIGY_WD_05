@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Weather Forecast</title>
+    {% load static%}
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="{% static 'style2.css' %}" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <i class="fa-solid fa-cloud"></i>
+          WeatherApp
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'get_weather' %}">Weather</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+          <div class="weather-form-container text-center">
+            <h2 class="text-center">Check Weather</h2>
+            <form
+              class="weather-form mt-4"
+              method="POST"
+              action="{% url 'get_weather' %}"
+            >
+              {% csrf_token %}
+              <div class="form-group mb-3">
+                <label for="cityInput" class="form-label"
+                  >Enter City Name</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="cityInput"
+                  name="city_name"
+                  placeholder="City Name"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn-custom w-100">
+                Get Weather
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% if current_day %}
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 col-sm-10">
+          <div class="weather-card">
+            <h3><b>{{ current_day_name }}</b></h3>
+            <h3>{{ current_day.city }}</h3>
+            <div class="weather-day"></div>
+            <div class="weather-icon">
+              <img
+                src="http://openweathermap.org/img/wn/{{ current_day.weather_icon }}@2x.png"
+                alt="{{ current_day.weather }}"
+              />
+            </div>
+            <div class="weather-data">{{ current_day.temperature }}°C</div>
+            <div class="weather-detail">
+              <b>Condition: </b>{{ current_day.weather }}
+            </div>
+            <div class="weather-detail">
+              <b>Humidity:</b> {{ current_day.humidity }}%
+            </div>
+            <div class="weather-detail">
+              <b>Wind Speed: </b>{{ current_day.wind }} m/s
+            </div>
+            <div class="weather-detail">
+              <b>Pressure: </b>{{ current_day.pressure }} hPa
+            </div>
+          </div>
+          <!-- Toggle Button -->
+          <div class="text-center mt-3">
+            <button id="toggle-forecast-btn" class="btn btn-primary">
+              Show 5-Day Forecast
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+    <div id="forecast-details" class="container mt-5" style="display: none">
+      <h1 class="text-center">
+        5-Day Weather Forecast for {{ current_day.city }}
+      </h1>
+      {% if error %}
+      <div class="alert alert-danger" role="alert">{{ error }}</div>
+      {% else %}
+      <div class="row">
+        {% for day in forecast %}
+        <div class="col-md-4 col-lg-3 mb-4">
+          <div class="card h-100">
+            <div class="card-body text-center">
+              <h4>{{ day.day_name }}</h4>
+              <!-- Display the day name here -->
+              <li class="list-group-item"><b>Date: {{ day.date }}</b></li>
+              <h5 class="card-title">{{ day.weather }}</h5>
+              <img
+                src="http://openweathermap.org/img/wn/{{ day.icon }}@2x.png"
+                alt="{{ day.description }}"
+                class="img-fluid mb-3"
+              />
+              <h6>{{ day.temp }}°C</h6>
+              <p class="card-text">{{ day.description }}</p>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <b>Pressure:</b> {{ day.pressure }} hPa
+                </li>
+                <li class="list-group-item">
+                  <b>Humidity:</b> {{ day.humidity }}%
+                </li>
+                <li class="list-group-item"><b>Wind:</b> {{ day.wind }} m/s</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const button = document.getElementById("toggle-forecast-btn");
+        const forecastDetails = document.getElementById("forecast-details");
+
+        button.addEventListener("click", () => {
+          if (
+            forecastDetails.style.display === "none" ||
+            forecastDetails.style.display === ""
+          ) {
+            forecastDetails.style.display = "block";
+            button.textContent = "Hide 5-Day Forecast";
+          } else {
+            forecastDetails.style.display = "none";
+            button.textContent = "Show 5-Day Forecast";
+          }
+        });
+      });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
